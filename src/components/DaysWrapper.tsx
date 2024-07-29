@@ -1,15 +1,22 @@
-import { daysOfJs } from "../jsStore";
+import { Tooltip } from "antd";
+// import { useState } from "react";
 import { IJsDay } from "../types";
 
-const DaysWrapper = () => {
+const DaysWrapper = ({ label, content }: IJsDay) => {
+
+  const handleDayContent = () => {
+    console.log(content);
+  };
+
   return (
-    <div className="flex flex-wrap justify-center gap-2">
-      {daysOfJs.map((dayEle: IJsDay) => (
-        <button className="bg-emerald-500 px-5 py-2 rounded-xl font-medium hover:scale-105">
-          {dayEle.label}
-        </button>
-      ))}
-    </div>
+    <Tooltip title={content}>
+      <button
+        onClick={handleDayContent}
+        className="bg-emerald-500 px-5 py-2 rounded-xl font-medium hover:scale-105"
+      >
+        {label}
+      </button>
+    </Tooltip>
   );
 };
 

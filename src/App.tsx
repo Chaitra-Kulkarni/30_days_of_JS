@@ -1,4 +1,6 @@
 import DaysWrapper from "./components/DaysWrapper";
+import { daysOfJs } from "./jsStore";
+import { IJsDay } from "./types";
 
 function App() {
   return (
@@ -13,7 +15,15 @@ function App() {
         <div className="h-[10px] w-[10px] rounded bg-lime-500"></div>
       </div>
       <div className="w-1/2 my-2">
-        <DaysWrapper />
+        <div className="flex flex-wrap justify-center items-center gap-2">
+          {daysOfJs.map((dayEle: IJsDay, index: number) => (
+            <DaysWrapper
+              key={index}
+              label={dayEle.label}
+              content={dayEle.content}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
